@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>商品列表页</title>
+</head>
+<body>
+	{{range .}}
+			
+			<div>
+				<img src="http://localhost:8080/{{.Img |html}}" alt="{{.Img |html}}">
+				<a href="/goods/{{.Name}}">
+					{{.Name}}					
+				</a>
+				{{.Price}}RMB
+				{{.Desc}}
+			</div>	
+	{{end}}
+	
+</body>
+</html>
