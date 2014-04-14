@@ -1,16 +1,15 @@
 package huasheng
 
 import (
-	"fmt"
 	"net/http"
 	"regexp"
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "index", nil)
+	renderTemplate(w, r, "index.html", map[string]interface{}{})
 }
 
-func loginHandler(w http.ResponseWriter, r *http.Request) {
+/*func loginHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		renderTemplate(w, "login", nil)
 	} else {
@@ -53,7 +52,7 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 	}
-}
+}*/
 
 func goodslistHandler(w http.ResponseWriter, r *http.Request) {
 	goodes, err := loadGoodses()
@@ -62,7 +61,7 @@ func goodslistHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 
-	renderTemplate(w, "goodslist", goodes)
+	renderTemplate(w, r, "goodslist.html", map[string]interface{}{"goods": goodes})
 }
 
 var validPath = regexp.MustCompile("^/(goods)/(中原花生油大罐装|中原花生油小罐装)$")
@@ -83,5 +82,6 @@ func goodsHandler(w http.ResponseWriter, r *http.Request, name string) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	renderTemplate(w, "goods", g)
+	
+	renderTemplate(w, r, "goods.html", map[string]interface{}{"goods": g})
 }

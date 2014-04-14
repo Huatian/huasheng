@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="keywords" content="花生油, 中原, 纯品油, 调和油, 食用油" />
+	<meta name="description" content="Golang中国社区，致力于打造国内Gopher交流的地方，提供社区，文章，酷站，第三方包，下载功能">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{template "Title" .}} - 中原花生油</title>
+	<script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.0.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/css/style.css?v=2" type="text/css">
+</head>
+
+<body>
+		<header>
+		<div class="container">
+			<a class="brand" href="/"><img src="http://localhost:8080/static/img/huasheng.jpg" alt="中原花生油" width="60" height="60"></a>
+			{{if .username}}
+			<ul class="nav navbar-nav pull-right" style="margin-top: 1em;">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						我的空间
+						<b class="caret"></b>
+					</a>
+                    <ul class="dropdown-menu" role="menu">
+						<li><a href="/profile"><i class="glyphicon glyphicon-cog"></i> 设置</a></li>
+						<li><a href="/change_password"><i class="glyphicon glyphicon-edit"></i> 修改密码</a></li>
+						{{if .isSuperUser}}
+							<li><a href="/admin"><i class="glyphicon glyphicon-wrench"></i> 管理</a></li>
+						{{end}}
+						<li class="divider"></li>
+						<li><a href="/signout"><i class="glyphicon glyphicon-off"></i> 登出</a></li>
+					</ul>
+				</li>
+			</ul>
+			{{end}}
+			<div class="pull-right" style="margin-top: 2em;">
+				{{if .username}}
+					{{.username}}，你好 &nbsp;&nbsp;
+				{{else}}
+					<a href="/signin">登录</a> <span class="divider">|</span>
+					<a href="/signup">注册</a>
+				{{end}}
+			</div>
+		</div>
+	</header>
+	
+	<div class="container">
+		<div class="row">
+			{{template "LeftSide" .}}
+            <div class="col-md-{{template "ContentWidth"}}">
+			{{template "Breadcrumb" .}}
+			{{template "Content" .}}
+			</div>
+			{{template "RightSide" .}}
+		</div>
+	</div>
+	
+	<footer class="footer">
+		<div class="container">
+			<p>
+				<ul class="footer-links">
+					<li><a href="/about">关于</a>
+					<li class="muted">&middot;</li>
+					<li><a href="/faq">FAQ</a></li>
+					<li class="muted">&middot;</li>
+					<li><a href="/go/feedback">反馈</a></li>
+					<li class="muted">&middot;</li>
+					<li><a href="https://github.com/jimmykuu/gopher" target="_blank">GitHub</a></li>
+                    <li class="muted">&middot;</li>
+                    <li><a href="https://me.alipay.com/jimmykuu" target="_blank">捐赠</a></li>
+				</ul>
+			</p>
+			<p>&copy;2012-2014 golangtc.com</p>
+			<p>Website built by <a href="https://github.com/Huatian/huasheng" target="_blank">Huatian</a>, powered by <a href="http://golang.org/" target="_blank">Golang</a>, <a href="http://www.mongodb.org/" target="_blank">MongoDB</a>.</p>
+			<p>Build version {{.goVersion}}.</p>
+			<p>Based on <a target="_blank" href="http://getbootstrap.com/">Bootstrap</a>. Icons from <a target="_blank" href="http://glyphicons.com/">Glyphicons</a>.</p>
+			<p style="text-align: center; vertical-align: middle;">
+				<a href="http://www.golang.org" target="_blank"><img src="http://gopher.qiniudn.com/static/img/Golang.png" alt="Golang"></a>
+				<a href="http://www.mongodb.org/" target="_blank"><img src="http://gopher.qiniudn.com/static/img/PoweredMongoDBbeige50.png" alt="MongoDB"></a>
+				<a href="http://www.linode.com/?r=2bbf272ff1d5457dfcc269442534b20cae7b7fc4" target="_blank"><img src="http://gopher.qiniudn.com/static/img/linode.png" alt="linode"></a>
+				<a href="http://portal.qiniu.com/signup?code=3lel8p4gwbv4e" target="_blank"><img src="http://qiniutek.com/images/logo-2.png" alt="七牛云存储"></a>
+			</p>
+		</div>
+	</footer>
+</body>

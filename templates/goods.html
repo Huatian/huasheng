@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-	<title>商品详情页</title>
-</head>
-<body>
+{{define "Title"}}首页{{end}}
+{{define "Breadcrumb"}}{{end}}
+{{define "ContentWidth"}}8{{end}}
+{{define "Content"}}
 			
 			<div>
 				<img src="http://localhost:8080/{{.Img |html}}" alt="{{.Img |html}}">
 				
-				{{.Name}}
-				{{.Price}}RMB
-				{{.Desc}}
+				{{.goods.Name}}
+				{{.goods.Price}}RMB
+				{{.goods.Desc}}
 			</div>	
 	
-</body>
-</html>
+{{end}}
+
+{{define "LeftSide"}}{{end}}
+
+{{define "RightSide"}}{{end}}

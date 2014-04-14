@@ -5,11 +5,7 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-type User struct {
-	Name     string        `bson:"name"`
-	Email    string        `bson:"email"`
-	Password string        `bson:"password"`
-}
+
 
 //用于用户注册，一旦保存，不可更改
 func (u *User) Create() error {
@@ -25,7 +21,7 @@ func (u *User) Create() error {
 }
 
 //用于用户登录验证
-func (u *User) Login() (bool, error) {
+/*func (u *User) Login() (bool, error) {
 	session, db, err := GetDB()
 	if err != nil {
 		return false, err
@@ -41,9 +37,9 @@ func (u *User) Login() (bool, error) {
 	}
 	
 	return u.Password == user.Password,nil
-}
+}*/
 
-func (u *User) IsExist() (bool, error) {
+/*func (u *User) IsExist() (bool, error) {
 	session, db, err := GetDB()
 	if err != nil {
 		return false, err
@@ -59,7 +55,7 @@ func (u *User) IsExist() (bool, error) {
 	}
 	
 	return u.Name == user.Name,nil
-}
+}*/
 
 type UserInfo struct {
 	Id_     bson.ObjectId `bson:"_id"`

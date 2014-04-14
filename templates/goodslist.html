@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-	<title>商品列表页</title>
-</head>
-<body>
-	{{range .}}
+{{define "Title"}}首页{{end}}
+{{define "Breadcrumb"}}{{end}}
+{{define "ContentWidth"}}8{{end}}
+{{define "Content"}}
+	{{range .goods}}
 			
 			<div>
 				<img src="http://localhost:8080/{{.Img |html}}" alt="{{.Img |html}}">
@@ -16,5 +14,8 @@
 			</div>	
 	{{end}}
 	
-</body>
-</html>
+{{end}}
+
+{{define "LeftSide"}}{{end}}
+
+{{define "RightSide"}}{{end}}
